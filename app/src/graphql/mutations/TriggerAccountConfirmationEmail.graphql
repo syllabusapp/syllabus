@@ -1,0 +1,5 @@
+mutation TriggerAccountConfirmationEmail($email: String!) {
+  triggerAccountConfirmationEmail(email: $email) {
+    ok
+  }
+}

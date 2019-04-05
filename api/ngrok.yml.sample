@@ -1,0 +1,5 @@
+authtoken: INSERT_NGROK_TOKEN_HERE
+tunnels:
+  api:
+    addr: 4000
+    proto: http

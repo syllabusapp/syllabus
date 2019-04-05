@@ -1,0 +1,95 @@
+enum SettingTypeType {
+  Boolean
+  String
+  Number
+}
+
+type Organization {
+  id: ID! @unique
+  name: String! @unique
+  users: [User!]! @relation(name: "UsersByOrganization")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "OrganizationCreatedBy")
+  updatedBy: User @relation(name: "OrganizationUpdatedBy")
+}
+
+type Plan {
+  id: ID! @unique
+  amount: Int
+  # currency: PlanCurrencyType
+  # interval: PlanIntervalType
+  nickname: String!
+  product: Product! @relation(name: "PlanProduct")
+  # usageType: PlanUsageType
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "PlanCreatedBy")
+  updatedBy: User @relation(name: "PlanUpdatedBy")
+}
+
+type Product {
+  id: ID! @unique
+  name: String!
+  # type: ProductTypeType
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "ProductCreatedBy")
+  updatedBy: User @relation(name: "ProductUpdatedBy")
+}
+
+type Role {
+  id: ID! @unique
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "RoleCreatedBy")
+  updatedBy: User @relation(name: "RoleUpdatedBy")
+}
+
+type Setting {
+  id: ID! @unique
+  isGDPR: Boolean
+  key: String!
+  label: String!
+  lastUpdatedByUser: DateTime
+  type: SettingTypeType!
+  value: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "SettingCreatedBy")
+  updatedBy: User @relation(name: "SettingUpdatedBy")
+}
+
+type StripeSubscription {
+  id: ID! @unique
+  customer: User! @relation(name: "StripeSubscriptionByUser")
+  plan: Plan! @relation(name: "StripeSubscriptionPlan")
+  quantity: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "StripeSubscriptionCreatedBy")
+  updatedBy: User @relation(name: "StripeSubscriptionUpdatedBy")
+}
+
+type User {
+  id: ID! @unique
+  deletedAt: DateTime
+  email: String! @unique
+  emailConfirmToken: String
+  emailConfirmed: Boolean! @default(value: "true")
+  firstName: String!
+  lastLogin: DateTime
+  lastName: String!
+  organization: Organization! @relation(name: "UsersByOrganization")
+  password: String!
+  resetExpires: DateTime
+  resetToken: String
+  roles: [Role!]! @relation(name: "RolesByUser")
+  settings: [Setting!]! @relation(name: "SettingsByUser")
+  subscription: StripeSubscription @relation(name: "StripeSubscriptionByUser")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User @relation(name: "UserCreatedBy")
+  updatedBy: User @relation(name: "UserUpdatedBy")
+}

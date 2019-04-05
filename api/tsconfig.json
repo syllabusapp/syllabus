@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "rootDir": ".",
+    "outDir": "dist",
+    "lib": ["es2015", "esnext.asynciterable", "es2017", "dom"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false
+  },
+  "include": ["./src/**/*.ts", ".yoga/**/*"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,23 @@
+overwrite: true
+schema: "api/src/schema.graphql"
+documents: "app/src/graphql/**/*.graphql"
+generates:
+  app/src/generated/graphql.tsx:
+    config:
+      noNamespaces: true
+      withHOC: false
+      withComponents: false
+      withHooks: true
+    plugins:
+      - "fragment-matcher"
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo":
+  app/src/types.d.ts:
+    config:
+      noNamespaces: true
+    plugins:
+      - "typescript-graphql-files-modules"
+  app/graphql.schema.json:
+    plugins:
+      - "introspection"

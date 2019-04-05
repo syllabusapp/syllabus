@@ -1,0 +1,32 @@
+{
+  "dashboard": "Dashboard",
+  "dont-have-an-account": "Don't have an account?",
+  "email": "Email",
+  "forgot-password": {
+    "button-text": "Forgot Password",
+    "body": "Provide your email and we will send you a link that will allow you to create a new password.",
+    "question": "Forgot Password?",
+    "heading": "<0>Forgot your Password?<1></1>Not a problem.</0>"
+  },
+  "log-in": "Log In",
+  "new-password": "New Password",
+  "not-found": "Not Found",
+  "password": "Password",
+  "privacy-policy-footer": "Privacy <1>Policy</1>",
+  "privacy-policy": "Privacy Policy",
+  "repeat-new-password": "Repeat New Password",
+  "reset-password": "Reset Password",
+  "return-home": "Return Home",
+  "sign-up": "Sign Up",
+  "terms-of-service-footer": "Terms <1>of Service</1>",
+  "terms-of-service": "Terms of Service",
+  "verify-account": "Hey! Can you <1>verify your email address</1> (<2></2>) for us? <3>Re-send confirmation email</3>",
+  "welcome": "Welcome to Syllabus!",
+  "notification": {
+    "check-email": "Please check your email!",
+    "error": "There was an error. Please try again.",
+    "retry-reset-password": "Error! Please open link from the forgot password email again.",
+    "reset-password-success": "Password reset successfully!",
+    "sign-up-success": "Signed up successfully!"
+  }
+}
