@@ -33,7 +33,6 @@ export function getUserId(context: Context): string | AuthError {
       .APP_SECRET as string) as Token;
     return verifiedToken && verifiedToken.sub;
   }
-
   throw new AuthError();
 }
 
@@ -78,12 +77,11 @@ export function getHashedPassword(password: string): Promise<string> {
   return hash(password, 10);
 }
 
-export function generateToken(user: User): string {
+export function generateToken(user: User, isAdmin: boolean): string {
   return sign(
     {
       // iat set automatically
       // exp is set to 1 week from current
-      nbf: Date.now(),
       exp: Math.floor(Date.now() / 1000) + 60 * 10080,
       sub: user.id,
       aud: 'https://syllabusapp.com',
@@ -91,6 +89,7 @@ export function generateToken(user: User): string {
       firstName: user.firstName,
       lastName: user.lastName,
       emailConfirmed: user.emailConfirmed,
+      isAdmin,
     },
     process.env.APP_SECRET as string,
   );

@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { yogaContext } from 'yoga';
 import { Prisma } from '../.yoga/prisma-client';
 import { AuthSource } from './data-sources/AuthSource';
@@ -9,6 +10,7 @@ export interface Context {
   auth: AuthSource;
   email: EmailSource;
   prisma: Prisma;
+  req: Request;
   stripe: StripeSource;
 }
 

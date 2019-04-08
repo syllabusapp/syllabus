@@ -10,6 +10,7 @@ type AuthPayload {
 scalar DateTime
 
 type Mutation {
+  addProduct(name: String!, type: ProductTypeType!): StripeProductPayload!
   changePassword(newPassword: String!, oldPassword: String!): UserIdPayload!
   confirmAccount(email: String!, emailConfirmToken: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
@@ -153,7 +154,14 @@ input PlanWhereInput {
 type Product {
   createdAt: DateTime!
   name: String!
+  stripeId: ID!
+  type: ProductTypeType!
   updatedAt: DateTime!
+}
+
+enum ProductTypeType {
+  Good
+  Service
 }
 
 input ProductWhereInput {
@@ -197,6 +205,24 @@ input ProductWhereInput {
   name_starts_with: String
   NOT: [ProductWhereInput!]
   OR: [ProductWhereInput!]
+  stripeId: ID
+  stripeId_contains: ID
+  stripeId_ends_with: ID
+  stripeId_gt: ID
+  stripeId_gte: ID
+  stripeId_in: [ID!]
+  stripeId_lt: ID
+  stripeId_lte: ID
+  stripeId_not: ID
+  stripeId_not_contains: ID
+  stripeId_not_ends_with: ID
+  stripeId_not_in: [ID!]
+  stripeId_not_starts_with: ID
+  stripeId_starts_with: ID
+  type: ProductTypeType
+  type_in: [ProductTypeType!]
+  type_not: ProductTypeType
+  type_not_in: [ProductTypeType!]
   updatedAt: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
@@ -408,6 +434,12 @@ input SignUpInput {
   password: String!
 }
 
+type StripeProductPayload {
+  name: String!
+  stripeId: ID!
+  type: ProductTypeType!
+}
+
 type StripeSubscription {
   createdAt: DateTime!
   customer: User!
@@ -470,24 +502,15 @@ type TriggerEmailPayload {
 
 type User {
   createdAt: DateTime!
-  createdBy: User
-  deletedAt: DateTime
   email: String!
   emailConfirmed: Boolean!
-  emailConfirmToken: String
   firstName: String!
-  id: ID!
-  lastLogin: DateTime
   lastName: String!
   organization: Organization!
-  password: String!
-  resetExpires: DateTime
-  resetToken: String
   roles(after: String, before: String, first: Int, last: Int, orderBy: RoleOrderByInput, skip: Int, where: RoleWhereInput): [Role!]
   settings(after: String, before: String, first: Int, last: Int, orderBy: SettingOrderByInput, skip: Int, where: SettingWhereInput): [Setting!]
   subscription: StripeSubscription
   updatedAt: DateTime!
-  updatedBy: User
 }
 
 type UserIdPayload {

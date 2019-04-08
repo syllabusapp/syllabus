@@ -16,4 +16,5 @@ hooks:
 seed:
   run: npx ts-node ./prisma/seed.ts
 
-endpoint: https://us1.prisma.sh/syllabus/syllabus-api/dev
+# endpoint: https://us1.prisma.sh/syllabus/syllabus-api/dev
+endpoint: http://localhost:4466/

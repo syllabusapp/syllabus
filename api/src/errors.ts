@@ -71,3 +71,6 @@ export const EmailSendError = createError('EmailSendError', {
   message:
     'There was an error while sending an email. We have reported it to our team. Please try again.',
 });
+export const ProductCreationError = createError('ProductCreationError', {
+  message: 'There was an error while creating the product. Please try again.',
+});

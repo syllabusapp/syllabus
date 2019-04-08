@@ -34,6 +34,12 @@ export class AuthSource {
   // eslint-disable-next-line @typescript-eslint/no-parameter-properties
   public constructor(protected ctx: Context) {}
 
+  public async canPerformAdminAction(): Promise<boolean> {
+    // @TODO update after roles is fixed
+    // const user = await getUser(this.ctx);
+    // return user.roles.hasAdmin?
+    return true;
+  }
   public async changePassword(
     oldPassword: string,
     newPassword: string,
@@ -92,9 +98,8 @@ export class AuthSource {
       updatedUser.email,
       updatedUser.firstName,
     );
-
     return {
-      token: generateToken(updatedUser),
+      token: generateToken(updatedUser, true),
       user: updatedUser,
     };
   }
@@ -126,7 +131,7 @@ export class AuthSource {
     });
 
     return {
-      token: generateToken(updatedUser),
+      token: generateToken(updatedUser, true),
       user: updatedUser,
     };
   }
@@ -189,7 +194,7 @@ export class AuthSource {
 
     const emailConfirmToken = uuid();
 
-    // @TODO: Add role, settings, organzation
+    // @TODO: Add settings, organzation
     const newUser = await this.ctx.prisma.createUser({
       email: data.email,
       emailConfirmToken,
@@ -200,6 +205,9 @@ export class AuthSource {
         create: {
           name: data.email,
         },
+      },
+      roles: {
+        connect: [{ name: 'user' }],
       },
       password: hashedPassword,
     });
@@ -217,7 +225,7 @@ export class AuthSource {
     );
 
     return {
-      token: generateToken(newUser),
+      token: generateToken(newUser, true),
       user: newUser,
     };
   }
