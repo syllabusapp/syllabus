@@ -3,7 +3,8 @@
   "dont-have-an-account": "Don't have an account?",
   "email": "Email",
   "forgot-password": {
-    "button-text": "Forgot Password",
+    "button-text": "Email Me",
+    "text": "Forgot Password",
     "body": "Provide your email and we will send you a link that will allow you to create a new password.",
     "question": "Forgot Password?",
     "heading": "<0>Forgot your Password?<1></1>Not a problem.</0>"
