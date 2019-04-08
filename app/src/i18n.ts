@@ -14,7 +14,9 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     load: 'languageOnly',
-    saveMissing: true,
+    react: {
+      useSuspense: true,
+    },
   });
 
 export default i18n;

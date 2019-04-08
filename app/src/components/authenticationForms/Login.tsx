@@ -36,7 +36,7 @@ interface LoginFormProps {
 export const LoginForm: React.SFC<LoginFormProps> = ({
   forgotPasswordAction,
 }) => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   // const {notify} = useContext(NotificationContext);
   const {setToken} = useContext(UserContext);
   const sendLoginMutation = useLoginMutation();
@@ -59,6 +59,7 @@ export const LoginForm: React.SFC<LoginFormProps> = ({
             setToken(result.data.login.token);
           navigate(`/`);
         } catch (err) {
+          console.error(err);
           err.graphQLErrors.map(
             // @TODO notify user of errors
             ({message}: {message: string}) =>

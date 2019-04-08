@@ -32,7 +32,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const SignUpForm: React.SFC = () => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   // const {notify} = useContext(NotificationContext);
   // const {notify: bertNotify} = useContext(BertContext);
   const {setToken} = useContext(UserContext);

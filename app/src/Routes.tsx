@@ -5,21 +5,23 @@ import {
   Router,
 } from '@reach/router';
 import {useMachine} from '@xstate/react';
-import React from 'react';
+import React, {lazy} from 'react';
 import posed, {PoseGroup} from 'react-pose';
 import {QueryParamProvider} from 'use-query-params';
 import {Machine} from 'xstate';
-import {Footer, Header, PrivateRoute} from './components';
+import {AdminRoute, Footer, Header, PrivateRoute} from './components';
 import ConfirmAccount from './pages/ConfirmAccount';
-import Dashboard from './pages/Dashboard';
 import {ForgotPassword as ForgotPasswordLayout} from './pages/ForgotPassword';
 import {LogIn as LogInLayout} from './pages/LogIn';
-import NotFound from './pages/NotFound';
-import PrivacyPolicy from './pages/PrivacyPolicy';
 import ResetPassword from './pages/ResetPassword';
 import {SignUp as SignUpLayout} from './pages/SignUp';
-import TermsOfService from './pages/TermsOfService';
 import {actions, machine, states} from './statecharts/Authentication';
+
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 const LogIn: React.SFC<RouteComponentProps> = () => {
   const [current, send] = useMachine(machine);
@@ -109,6 +111,7 @@ const Routes: React.SFC = () => {
         <PrivacyPolicy path='/privacy-policy' />
         <ResetPassword path='/reset-password' />
         <ConfirmAccount path='/confirm-account' />
+        <AdminRoute as={AdminDashboard} path='/admin' />
         <SignUp path='/sign-up' />
         <NotFound default={true} />
       </PosedRouter>

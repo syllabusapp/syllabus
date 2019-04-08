@@ -12,7 +12,7 @@ export const LogIn: React.SFC<LogInProps> = ({
   forgotPasswordAction,
   handleClick,
 }) => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   return (
     <>
       <Helmet>

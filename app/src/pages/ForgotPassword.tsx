@@ -6,11 +6,11 @@ import {ForgotPasswordForm} from '../components';
 // import {NotificationProvider} from '../stores';
 
 export const ForgotPassword: React.SFC<RouteComponentProps> = ({children}) => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   return (
     <>
       <Helmet>
-        <title>{t('forgot-password.button-text')}</title>
+        <title>{t('forgot-password.text')}</title>
       </Helmet>
       <Trans i18nKey='forgot-password.heading'>
         <h4 className='page-header'>

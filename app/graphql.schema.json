@@ -4633,6 +4633,154 @@
             "defaultValue": null
           },
           {
+            "name": "stripeId",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_contains",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_ends_with",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_gt",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_gte",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {"kind": "SCALAR", "name": "ID", "ofType": null}
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_lt",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_lte",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_not",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_not_contains",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_not_ends_with",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {"kind": "SCALAR", "name": "ID", "ofType": null}
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_not_starts_with",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "stripeId_starts_with",
+            "description": null,
+            "type": {"kind": "SCALAR", "name": "ID", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {"kind": "ENUM", "name": "ProductTypeType", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "type_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "ProductTypeType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "type_not",
+            "description": null,
+            "type": {"kind": "ENUM", "name": "ProductTypeType", "ofType": null},
+            "defaultValue": null
+          },
+          {
+            "name": "type_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "ProductTypeType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "updatedAt",
             "description": null,
             "type": {"kind": "SCALAR", "name": "DateTime", "ofType": null},
@@ -4709,6 +4857,29 @@
         ],
         "interfaces": null,
         "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ProductTypeType",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "Good",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "Service",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
         "possibleTypes": null
       },
       {
@@ -5199,6 +5370,34 @@
             "deprecationReason": null
           },
           {
+            "name": "stripeId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {"kind": "SCALAR", "name": "ID", "ofType": null}
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ProductTypeType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "updatedAt",
             "description": null,
             "args": [],
@@ -5221,6 +5420,47 @@
         "name": "Mutation",
         "description": null,
         "fields": [
+          {
+            "name": "addProduct",
+            "description": null,
+            "args": [
+              {
+                "name": "name",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {"kind": "SCALAR", "name": "String", "ofType": null}
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "type",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "ProductTypeType",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "StripeProductPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "changePassword",
             "description": null,
@@ -5458,6 +5698,57 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "TriggerEmailPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "StripeProductPayload",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {"kind": "SCALAR", "name": "String", "ofType": null}
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "stripeId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {"kind": "SCALAR", "name": "ID", "ofType": null}
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ProductTypeType",
                 "ofType": null
               }
             },

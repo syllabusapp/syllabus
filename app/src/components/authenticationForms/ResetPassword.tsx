@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const ResetPasswordForm: React.SFC = ({children}) => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   // const {notify} = useContext(NotificationContext);
   const resetPasswordMutation = useResetPasswordMutation();
   const [query, setQuery] = useQueryParams({

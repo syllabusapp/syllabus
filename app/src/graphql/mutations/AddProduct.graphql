@@ -1,0 +1,7 @@
+mutation AddProduct($name: String!, $type: ProductTypeType!) {
+  addProduct(name: $name, type: $type) {
+    name
+    type
+    stripeId
+  }
+}

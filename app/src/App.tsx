@@ -6,17 +6,17 @@ import {Helmet} from 'react-helmet-async';
 import {ErrorBoundary, Loading} from './components';
 import {AUTH_TOKEN} from './constants';
 import Routes from './Routes';
-import {UserProvider} from './stores';
+import {TokenType, UserProvider} from './stores';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const httpLink = new HttpLink({
   uri: apiUrl,
 });
 const middlewareLink = new ApolloLink((operation, forward) => {
-  const tokenValue = window.localStorage.getItem(AUTH_TOKEN);
+  const token: TokenType = window.localStorage.getItem(AUTH_TOKEN);
   operation.setContext({
     headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : '',
+      Authorization: token ? `Bearer ${JSON.parse(token)}` : '',
     },
   });
   if (forward) {

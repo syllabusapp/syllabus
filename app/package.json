@@ -37,7 +37,6 @@
     "apollo-client-preset": "^1.0.8",
     "apollo-link": "^1.2.11",
     "formik": "^1.5.2",
-    "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",
     "i18next": "^15.0.9",
     "i18next-browser-languagedetector": "^3.0.1",

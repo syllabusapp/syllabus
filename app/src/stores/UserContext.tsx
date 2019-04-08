@@ -15,6 +15,7 @@ interface User {
   firstName?: string;
   lastName?: string;
   emailConfirmed: boolean;
+  isAdmin: boolean;
 }
 
 interface Token {
@@ -22,18 +23,22 @@ interface Token {
   firstName: string;
   lastName: string;
   emailConfirmed: boolean;
+  isAdmin: boolean;
 }
 
+export type TokenType = string | null;
+export type UserType = User | undefined;
+
 export interface UserContextInterface {
-  token: string | null;
-  user: User | null;
-  setUser(user: User): void;
-  setToken(token: string | null): void;
+  token?: TokenType;
+  user?: User;
+  setUser(user: UserType): void;
+  setToken(token: TokenType): void;
 }
 
 const UserProvider: React.SFC = ({children}) => {
-  const [token, setToken] = useAuthTokenState<string | null>(null);
-  const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useAuthTokenState<TokenType>(null);
+  const [user, setUser] = useState<UserType>(undefined);
 
   useEffect(() => {
     bootstrapData();
@@ -44,7 +49,7 @@ const UserProvider: React.SFC = ({children}) => {
       if (token) {
         const expired = isTokenExpired(token);
         if (expired) {
-          setUser(null);
+          setUser(undefined);
           return setToken(null);
         }
         const decodedToken = decode(token) as Token;
@@ -53,10 +58,11 @@ const UserProvider: React.SFC = ({children}) => {
           lastName: decodedToken.lastName,
           email: decodedToken.email,
           emailConfirmed: decodedToken.emailConfirmed,
+          isAdmin: decodedToken.isAdmin,
         };
         return setUser(decodedUser);
       } else {
-        setUser(null);
+        setUser(undefined);
         return setToken(null);
       }
     } catch (err) {

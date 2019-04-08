@@ -2401,6 +2401,13 @@
     "@types/react" "*"
     "@types/webpack-env" "*"
 
+"@types/stripe@^6.25.9":
+  version "6.25.9"
+  resolved "https://registry.yarnpkg.com/@types/stripe/-/stripe-6.25.9.tgz#c60f88438f9e5756567bc22c63c7d82098a22c7e"
+  integrity sha512-5l/7puoWLOUnwLOXh3tm3wduwav7PHYMi+OyxoRrZgl6jDXD4j/IHIpkLlN2B/UYz7qlkvAxkl43Ef3l9psbSw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/tapable@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
@@ -8587,13 +8594,6 @@ graphql-upload@^8.0.2:
     http-errors "^1.7.1"
     object-path "^0.11.4"
 
-graphql@14.2.0:
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.2.0.tgz#ff25813ad6d186f3975977d56bc2d2434871f3b9"
-  integrity sha512-dlFHRtxsL4sBy1C1e3v64IUd5ndZhAOHZ/z3Dr4Nm6+cvr9elrnz4BhMF9h9mRBBnhUCGLc4GH4xvPbKG6sUeA==
-  dependencies:
-    iterall "^1.2.2"
-
 "graphql@^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0", "graphql@^0.12.0 || ^0.13.0 || ^14.0.0", graphql@^14.0.2, graphql@^14.2.1:
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.2.1.tgz#779529bf9a01e7207b977a54c20670b48ca6e95c"
@@ -14547,40 +14547,10 @@ prisma-client-lib@1.29.2:
     ws "^6.1.0"
     zen-observable "^0.8.10"
 
-prisma-client-lib@^1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-client-lib/-/prisma-client-lib-1.30.0.tgz#f9f3395037d6c9814c13b0a0f1252d7b49fb96f9"
-  integrity sha512-c9RTLndJ3CRH8fgedOMRTjEUnjEf/T5iHB7TnSCS8AC0dhfBQ87DuxtzNSF5U+98y4lY8QAjpr1PiWfbpDYNzA==
-  dependencies:
-    "@types/node" "^10.12.0"
-    "@types/prettier" "^1.13.2"
-    debug "^4.1.0"
-    flow-bin "^0.87.0"
-    graphql-tag "^2.10.0"
-    http-link-dataloader "^0.1.6"
-    jsonwebtoken "^8.3.0"
-    lodash.flatten "^4.4.0"
-    prettier "1.14.3"
-    prisma-datamodel "1.30.0"
-    prisma-generate-schema "1.30.0"
-    subscriptions-transport-ws "^0.9.15"
-    uppercamelcase "^3.0.0"
-    ws "^6.1.0"
-    zen-observable "^0.8.10"
-
 prisma-datamodel@1.29.2:
   version "1.29.2"
   resolved "https://registry.yarnpkg.com/prisma-datamodel/-/prisma-datamodel-1.29.2.tgz#2f0d525895f472ddd85b50d3d1941b35d0ab37bd"
   integrity sha512-oVdOqRTPLkz/ft/Dd3EnP+MLbJgW79Wilh0iTa8tjZgBv3ZYMeC84ycRnGzg3/zWxE20EIu8TKixVzkYFwGtLg==
-  dependencies:
-    graphql "^14.0.2"
-    pluralize "^7.0.0"
-    popsicle "10"
-
-prisma-datamodel@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-datamodel/-/prisma-datamodel-1.30.0.tgz#c6701c91beeaa4c00c733d5aac77410e6cccbcf5"
-  integrity sha512-4IagbEhdf0f/cSkZDrcNAx0tIabf4LcTWLvBJ/ddE4/i4q/kKhRzvSwh4cSU4EeE54jTN60FlDRqbCTcq+c65Q==
   dependencies:
     graphql "^14.0.2"
     pluralize "^7.0.0"
@@ -14613,16 +14583,6 @@ prisma-generate-schema@1.29.2:
     pluralize "^7.0.0"
     popsicle "10"
     prisma-datamodel "1.29.2"
-
-prisma-generate-schema@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-generate-schema/-/prisma-generate-schema-1.30.0.tgz#62f123d4e5a6d21ec8421357b79af543292163ed"
-  integrity sha512-r2yUoq5s7B9sgi10OZ1WBaLVTo3Yv1xGn9VvcarIeIXSeLEWEGAYd6bU/CeZpbAlaeR0gKAc4rk4SB+WlQXiZA==
-  dependencies:
-    graphql "^14.0.2"
-    pluralize "^7.0.0"
-    popsicle "10"
-    prisma-datamodel "1.30.0"
 
 prisma-json-schema@0.1.3:
   version "0.1.3"
@@ -14677,7 +14637,7 @@ prisma-yml@1.29.2:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prisma@^1.29.2:
+prisma@1.29.2:
   version "1.29.2"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-1.29.2.tgz#71f23238c302852fcc8b7f27d437c3afc0642310"
   integrity sha512-GffxGODbpxa+VxFr/K7IvKXdOQCQinMyt5lNCKLe/gNQvXEjmGKYkd8gcYqijezT/qPRdrx4njNU32TSBbdnBA==
@@ -14949,7 +14909,7 @@ qs@6.5.2, qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-qs@^6.5.0, qs@^6.5.1, qs@^6.5.2:
+qs@^6.5.0, qs@^6.5.1, qs@^6.5.2, qs@^6.6.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
@@ -17314,6 +17274,16 @@ strip-json-comments@2.0.1, strip-json-comments@^2.0.1, strip-json-comments@~2.0.
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
+
+stripe@^6.28.0:
+  version "6.28.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.28.0.tgz#81f2bf174efe9503b50f24930a7e1d195c60f810"
+  integrity sha512-4taF37geIr9DqvWEm3G9VCz2iJSV/DFc3PcElCQdQK5GUMI/MOj6XE0oJRYMOAHz0Oq8pT+4yDQmkh3SDI3nQA==
+  dependencies:
+    lodash.isplainobject "^4.0.6"
+    qs "^6.6.0"
+    safe-buffer "^5.1.1"
+    uuid "^3.3.2"
 
 style-loader@0.23.1, style-loader@^0.23.1:
   version "0.23.1"

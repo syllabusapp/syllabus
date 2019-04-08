@@ -1,3 +1,4 @@
+export {AdminRoute} from './AdminRoute';
 export {ForgotPasswordForm} from './authenticationForms/ForgotPassword';
 export {LoginForm} from './authenticationForms/Login';
 export {ResetPasswordForm} from './authenticationForms/ResetPassword';

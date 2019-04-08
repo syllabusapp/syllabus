@@ -8,7 +8,7 @@ interface SignUpProps {
   handleClick(): void;
 }
 export const SignUp: React.SFC<SignUpProps> = ({handleClick}) => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   return (
     <>
       <Helmet>

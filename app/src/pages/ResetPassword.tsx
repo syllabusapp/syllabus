@@ -6,7 +6,7 @@ import {ResetPasswordForm} from '../components';
 // import {NotificationProvider} from '../stores';
 
 const ResetPassword: React.SFC<RouteComponentProps> = () => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   return (
     <>
       <Helmet>

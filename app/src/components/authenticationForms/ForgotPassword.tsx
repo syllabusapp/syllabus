@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const ForgotPasswordForm: React.SFC = () => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   // const {notify} = useContext(NotificationContext);
   const triggerPasswordResetMutation = useTriggerPasswordResetMutation();
   return (

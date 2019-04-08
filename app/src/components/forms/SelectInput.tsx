@@ -2,39 +2,34 @@ import {Field, FieldProps} from 'formik';
 import React from 'react';
 import {InputFeedback} from './InputFeedback';
 
-export interface TextInputProps {
+export interface SelectInputProps {
   children?: React.ReactNode;
-  disabled?: boolean;
   label: string;
   name: string;
-  placeholder?: string;
-  type?: string;
 }
 // @TODO create test
-export const TextInput: React.SFC<TextInputProps> = ({
+export const SelectInput: React.SFC<SelectInputProps> = ({
   children,
   label,
   name,
-  placeholder,
-  type = 'text',
   ...props
 }) => (
-  <Field name={name}>
-    {({field, form: {errors, touched}}: FieldProps) => (
+  <Field name={name} type='select'>
+    {({field}: FieldProps) => (
       <>
         <label htmlFor={name}>
-          <span className='pull-left'>{label}</span>
+          <span>{label}</span>
         </label>
-        <input
-          type={type}
+        <select
           id={name}
           name={name}
-          className='form-control'
-          placeholder={placeholder}
           aria-describedby={name + 'help'}
           {...field}
           {...props}
-        />
+        >
+          <option value='' />
+          {children}
+        </select>
         <InputFeedback data-testid='error' name={name} />
       </>
     )}

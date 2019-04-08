@@ -4,7 +4,7 @@ import {Helmet} from 'react-helmet-async';
 import {useTranslation} from 'react-i18next';
 
 const TermsOfService: React.SFC<RouteComponentProps> = () => {
-  const [t] = useTranslation();
+  const [t] = useTranslation('translation');
   return (
     <>
       <Helmet>

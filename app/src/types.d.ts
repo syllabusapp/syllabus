@@ -1,3 +1,11 @@
+declare module '*/AddProduct.graphql' {
+  import {DocumentNode} from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddProduct: DocumentNode;
+
+  export default defaultDocument;
+}
+
 declare module '*/ConfirmAccount.graphql' {
   import {DocumentNode} from 'graphql';
   const defaultDocument: DocumentNode;

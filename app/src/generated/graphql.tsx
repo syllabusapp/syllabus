@@ -35,6 +35,7 @@ export type AuthPayload = {
 };
 
 export type Mutation = {
+  addProduct: StripeProductPayload;
   changePassword: UserIdPayload;
   confirmAccount: AuthPayload;
   login: AuthPayload;
@@ -42,6 +43,11 @@ export type Mutation = {
   signup: AuthPayload;
   triggerAccountConfirmationEmail: TriggerEmailPayload;
   triggerPasswordReset: TriggerEmailPayload;
+};
+
+export type MutationAddProductArgs = {
+  name: Scalars['String'];
+  type: ProductTypeType;
 };
 
 export type MutationChangePasswordArgs = {
@@ -221,8 +227,15 @@ export type PlanWhereInput = {
 export type Product = {
   createdAt: Scalars['DateTime'];
   name: Scalars['String'];
+  stripeId: Scalars['ID'];
+  type: ProductTypeType;
   updatedAt: Scalars['DateTime'];
 };
+
+export enum ProductTypeType {
+  Good = 'Good',
+  Service = 'Service',
+}
 
 export type ProductWhereInput = {
   AND?: Maybe<Array<ProductWhereInput>>;
@@ -265,6 +278,24 @@ export type ProductWhereInput = {
   name_starts_with?: Maybe<Scalars['String']>;
   NOT?: Maybe<Array<ProductWhereInput>>;
   OR?: Maybe<Array<ProductWhereInput>>;
+  stripeId?: Maybe<Scalars['ID']>;
+  stripeId_contains?: Maybe<Scalars['ID']>;
+  stripeId_ends_with?: Maybe<Scalars['ID']>;
+  stripeId_gt?: Maybe<Scalars['ID']>;
+  stripeId_gte?: Maybe<Scalars['ID']>;
+  stripeId_in?: Maybe<Array<Scalars['ID']>>;
+  stripeId_lt?: Maybe<Scalars['ID']>;
+  stripeId_lte?: Maybe<Scalars['ID']>;
+  stripeId_not?: Maybe<Scalars['ID']>;
+  stripeId_not_contains?: Maybe<Scalars['ID']>;
+  stripeId_not_ends_with?: Maybe<Scalars['ID']>;
+  stripeId_not_in?: Maybe<Array<Scalars['ID']>>;
+  stripeId_not_starts_with?: Maybe<Scalars['ID']>;
+  stripeId_starts_with?: Maybe<Scalars['ID']>;
+  type?: Maybe<ProductTypeType>;
+  type_in?: Maybe<Array<ProductTypeType>>;
+  type_not?: Maybe<ProductTypeType>;
+  type_not_in?: Maybe<Array<ProductTypeType>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   updatedAt_gt?: Maybe<Scalars['DateTime']>;
   updatedAt_gte?: Maybe<Scalars['DateTime']>;
@@ -474,6 +505,12 @@ export type SignUpInput = {
   firstName: Scalars['String'];
   lastName: Scalars['String'];
   password: Scalars['String'];
+};
+
+export type StripeProductPayload = {
+  name: Scalars['String'];
+  stripeId: Scalars['ID'];
+  type: ProductTypeType;
 };
 
 export type StripeSubscription = {
@@ -772,6 +809,18 @@ export type UserWhereInput = {
   updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   updatedBy?: Maybe<UserWhereInput>;
 };
+export type AddProductMutationVariables = {
+  name: Scalars['String'];
+  type: ProductTypeType;
+};
+
+export type AddProductMutation = {__typename?: 'Mutation'} & {
+  addProduct: {__typename?: 'StripeProductPayload'} & Pick<
+    StripeProductPayload,
+    'name' | 'type' | 'stripeId'
+  >;
+};
+
 export type ConfirmAccountMutationVariables = {
   email: Scalars['String'];
   emailConfirmToken: Scalars['String'];
@@ -859,6 +908,42 @@ import * as React from 'react';
 import * as ReactApollo from 'react-apollo';
 import * as ReactApolloHooks from 'react-apollo-hooks';
 
+export const AddProductDocument = gql`
+  mutation AddProduct($name: String!, $type: ProductTypeType!) {
+    addProduct(name: $name, type: $type) {
+      name
+      type
+      stripeId
+    }
+  }
+`;
+
+export class AddProductComponent extends React.Component<
+  Partial<
+    ReactApollo.MutationProps<AddProductMutation, AddProductMutationVariables>
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Mutation<AddProductMutation, AddProductMutationVariables>
+        mutation={AddProductDocument}
+        {...(this as any)['props'] as any}
+      />
+    );
+  }
+}
+
+export function useAddProductMutation(
+  baseOptions?: ReactApolloHooks.MutationHookOptions<
+    AddProductMutation,
+    AddProductMutationVariables
+  >,
+) {
+  return ReactApolloHooks.useMutation<
+    AddProductMutation,
+    AddProductMutationVariables
+  >(AddProductDocument, baseOptions);
+}
 export const ConfirmAccountDocument = gql`
   mutation ConfirmAccount($email: String!, $emailConfirmToken: String!) {
     confirmAccount(email: $email, emailConfirmToken: $emailConfirmToken) {
