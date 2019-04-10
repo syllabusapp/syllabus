@@ -6,5 +6,5 @@ import { prismaObjectType } from 'yoga';
 */
 export const Mutation = prismaObjectType({
   name: 'Mutation',
-  definition(t) {},
+  definition() {},
 });

@@ -1,10 +1,10 @@
 import * as Stripe from 'stripe';
 import { NexusGenRootTypes } from '../../.yoga/nexus';
 import { ProductTypeType } from '../../.yoga/prisma-client';
-import { ProductCreationError } from '../errors';
-import { getUserId } from '../utils';
+import { ProductCreationError } from '../utils/errors';
+import { getUserId } from '../utils/utils';
 import { Context } from './Context';
-const stripe = new Stripe(process.env.STRIPE_TEST_PRIVATE_KEY);
+const stripe = new Stripe(process.env.STRIPE_TEST_PRIVATE_KEY as string);
 
 export class StripeSource {
   // eslint-disable-next-line @typescript-eslint/no-parameter-properties

@@ -1,10 +1,25 @@
-import { arg, prismaExtendType, prismaObjectType, stringArg } from 'yoga';
+import {
+  arg,
+  enumType,
+  objectType,
+  prismaExtendType,
+  prismaObjectType,
+  stringArg,
+} from 'yoga';
 
-/*
-  type Mutation {
-    addProduct(name: String!, type: ProductTypeType!): Product!
-  }
-*/
+export const StripeProductPayload = objectType({
+  name: 'StripeProductPayload',
+  definition(t) {
+    t.string('name');
+    t.id('stripeId');
+    t.field('type', { type: 'ProductTypeType' });
+  },
+});
+
+export const ProductTypeType = enumType({
+  name: 'ProductTypeType',
+  members: ['Good', 'Service'],
+});
 
 export const Product = prismaObjectType({
   name: 'Product',
@@ -29,7 +44,7 @@ export const ProductMutation = prismaExtendType({
 
     t.field('addProduct', {
       type: 'StripeProductPayload',
-      authorize: (root, args, ctx) => ctx.auth.canPerformAdminAction(),
+      authorize: (_root, _args, ctx) => ctx.auth.canPerformAdminAction(),
       args: {
         name: stringArg(),
         type: arg({

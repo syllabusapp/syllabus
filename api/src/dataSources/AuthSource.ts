@@ -14,13 +14,13 @@ import {
   UserEmailExistsError,
   UserNotFoundError,
   VagueError,
-} from '../errors';
+} from '../utils/errors';
 import {
   generateToken,
   getHashedPassword,
   getUser,
   validatePassword,
-} from '../utils';
+} from '../utils/utils';
 import { Context } from './Context';
 
 interface SignUpInputInterface {

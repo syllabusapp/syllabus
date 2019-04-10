@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "syllabus-api",
+  "builds": [
+    {
+      "src": "dist/src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "env": {
+    "PRISMA_SECRET": "testing123",
+    "PRISMA_ENDPOINT": "https://eu1.prisma.sh/flavian/webshop-server/staging",
+    "APP_SECRET": "jwtsecret123",
+    "MJ_APIKEY_PUBLIC": "",
+    "MJ_APIKEY_PRIVATE": "",
+    "SENTRY_DSN": "",
+    "STRIPE_TEST_PRIVATE_KEY": "sk_test_1itrH6UYor1r0IbawEmlBspc00iJFJ25E7"
+  },
+  "routes": [{ "src": "/.*", "dest": "dist/src/index.js" }]
+}

@@ -1,8 +1,8 @@
 import { hash } from 'bcrypt';
 import { sign, verify } from 'jsonwebtoken';
 import { string } from 'yup';
-import { User } from '../.yoga/prisma-client';
-import { Context } from './data-sources/context';
+import { User } from '../../.yoga/prisma-client';
+import { Context } from '../dataSources/context';
 import {
   ContextSpecificPasswordError,
   PasswordNotStringError,

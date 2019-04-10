@@ -1,24 +1,53 @@
-import { arg, prismaExtendType, prismaObjectType, stringArg } from 'yoga';
-import { getUserId } from '../utils';
+import {
+  arg,
+  inputObjectType,
+  objectType,
+  prismaExtendType,
+  prismaObjectType,
+  stringArg,
+} from 'yoga';
+import { getUserId } from '../utils/utils';
 
-/*
-  type Query {
-    currentUser: User
-  }
-  type Mutation {
-    changePassword(oldPassword: String!, newPassword: String!): UserIdPayload!
-    confirmAccount(email: String!, emailConfirmToken: String!): AuthPayload!
-    login(email: String!, password: String!): AuthPayload!
-    passwordReset(
-      email: String!
-      resetToken: String!
-      newPassword: String!
-    ): UserIdPayload!
-    signup(data: SignupInput!): AuthPayload!
-    triggerAccountConfirmationEmail(email: String!): TriggerConfirmationEmailPayload!
-    triggerPasswordReset(email: String!): TriggerPasswordResetPayload!
-  }
-*/
+export const UserUpdateInput = inputObjectType({
+  name: 'UserUpdateInput',
+  definition(t) {
+    t.string('email');
+    t.string('firstName');
+    t.string('lastName');
+  },
+});
+
+export const SignUpInput = inputObjectType({
+  name: 'SignUpInput',
+  definition(t) {
+    t.string('email');
+    t.string('firstName');
+    t.string('lastName');
+    t.string('password');
+  },
+});
+
+export const AuthPayload = objectType({
+  name: 'AuthPayload',
+  definition(t) {
+    t.string('token');
+    t.field('user', { type: 'User' });
+  },
+});
+
+export const TriggerEmailPayload = objectType({
+  name: 'TriggerEmailPayload',
+  definition(t) {
+    t.boolean('ok');
+  },
+});
+
+export const UserIdPayload = objectType({
+  name: 'UserIdPayload',
+  definition(t) {
+    t.string('id');
+  },
+});
 
 export const User = prismaObjectType({
   name: 'User',
@@ -47,7 +76,7 @@ export const UserQuery = prismaExtendType({
 
     t.field('currentUser', {
       type: 'User',
-      resolve: (parent, args, ctx) => {
+      resolve: (_parent, _args, ctx) => {
         const userId = getUserId(ctx);
         return ctx.prisma.user({ id: userId as string });
       },
