@@ -26,7 +26,12 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "api/dist/src/index.js" },
+    { "src": "/graphql/(.*)", "dest": "api/dist/src/index.js" },
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "dest": "app/static/$1"
+    },
     { "src": "/favicon.ico", "dest": "app/favicon.ico" },
     { "src": "/asset-manifest.json", "dest": "app/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "app/manifest.json" },
