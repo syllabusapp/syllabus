@@ -16,7 +16,7 @@
       "src": "api/dist/src/index.js",
       "use": "@now/node",
       "config": {
-        "maxLambdaSize": "12mb"
+        "maxLambdaSize": "20mb"
       }
     },
     {
