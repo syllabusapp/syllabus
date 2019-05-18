@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "scope": "syllabusapp",
+  "name": "syllabus",
+  "alias": "syllabus",
+  "env": {
+    "PRISMA_SECRET": "testing123",
+    "PRISMA_ENDPOINT": "https://eu1.prisma.sh/flavian/webshop-server/staging",
+    "APP_SECRET": "jwtsecret123",
+    "MJ_APIKEY_PUBLIC": "",
+    "MJ_APIKEY_PRIVATE": "",
+    "STRIPE_TEST_PRIVATE_KEY": "sk_test_1itrH6UYor1r0IbawEmlBspc00iJFJ25E7"
+  },
+  "builds": [
+    {
+      "src": "api/dist/src/index.js",
+      "use": "@now/node-server",
+      "config": {
+        "maxLambdaSize": "12mb"
+      }
+    },
+    {
+      "src": "app/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "app/build" }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/dist/src/index.js" },
+    { "src": "/favicon.ico", "dest": "app/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "app/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "app/manifest.json" },
+    { "src": "/precache-manifest.(.*)", "dest": "app/precache-manifest.$1" },
+    {
+      "src": "/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "app/service-worker.js"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "app/index.html"
+    }
+  ]
+}

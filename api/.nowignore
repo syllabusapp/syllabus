@@ -1,6 +1,0 @@
-*
-!package.json
-!dist
-!dist/**
-!lib
-!lib/**
