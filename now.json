@@ -2,7 +2,7 @@
   "version": 2,
   "scope": "syllabusapp",
   "name": "syllabus",
-  "alias": "syllabus",
+  "alias": "syllabusapp",
   "env": {
     "PRISMA_SECRET": "testing123",
     "PRISMA_ENDPOINT": "https://eu1.prisma.sh/flavian/webshop-server/staging",
