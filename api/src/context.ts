@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { yogaContext } from 'yoga';
 import { Prisma } from '../.yoga/prisma-client';
 import { AuthSource } from './dataSources/AuthSource';
-import { Context } from './dataSources/Context';
+import { Context } from './dataSources/context';
 import { EmailSource } from './dataSources/EmailSource';
 import { StripeSource } from './dataSources/StripeSource';
 

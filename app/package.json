@@ -11,6 +11,7 @@
     "format": "yarn prettier --write",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix --format verbose",
+    "now-build": "yarn build",
     "preserve": "yarn build",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
     "semantic-release": "semantic-release",

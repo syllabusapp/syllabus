@@ -43,8 +43,8 @@ export const ProductMutation = prismaExtendType({
     t.prismaFields([]);
 
     t.field('addProduct', {
-      type: 'StripeProductPayload',
       authorize: (_root, _args, ctx) => ctx.auth.canPerformAdminAction(),
+      type: 'StripeProductPayload',
       args: {
         name: stringArg(),
         type: arg({
@@ -52,7 +52,7 @@ export const ProductMutation = prismaExtendType({
           required: true,
         }),
       },
-      resolve: async (_, { name, type }, { stripe }) =>
+      resolve: async (_parent, { name, type }, { stripe }) =>
         await stripe.addProduct(name, type),
     });
   },

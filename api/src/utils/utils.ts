@@ -36,10 +36,12 @@ export function getUserId(context: Context): string | AuthError {
   throw new AuthError();
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getUser(ctx: Context): Promise<any> {
   return ctx.prisma.user({ id: getUserId(ctx) as string });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function validatePassword(password: string): Promise<null | any> {
   const isString = await string()
     .required()

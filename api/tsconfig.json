@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "esnext", "esnext.asynciterable"],
-    "sourceMap": true,
-    "rootDir": "./",
-    "outDir": "dist",
-    "strict": true,
-    "skipLibCheck": true,
+    "lib": ["es2015", "esnext.asynciterable", "es2017", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noUnusedLocals": true
-    // "module": "commonjs",
-    // "moduleResolution": "node",
-    // "target": "es5",
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5"
   },
-  "include": ["./.yoga/**/*.ts", "./src/**/*.ts", "prisma/seed.ts"],
-  "exclude": ["node_modules", "generated", "example", "examples", "scripts"]
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.ts", ".yoga/**/*"]
 }

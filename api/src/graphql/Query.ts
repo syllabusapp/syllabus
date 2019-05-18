@@ -1,4 +1,4 @@
-import { prismaObjectType } from 'yoga';
+import { prismaObjectType, stringArg } from 'yoga';
 
 /*
   type Query {
@@ -7,5 +7,12 @@ import { prismaObjectType } from 'yoga';
 */
 export const Query = prismaObjectType({
   name: 'Query',
-  definition() {},
+  definition(t) {
+    t.string('helloWorld', {
+      args: {
+        name: stringArg(),
+      },
+      resolve: (_parent, { name }, { auth }) => auth.helloWorld(name),
+    });
+  },
 });

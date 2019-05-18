@@ -1,12 +1,11 @@
 datamodel: datamodel.prisma
 
-# endpoint: https://us1.prisma.sh/syllabus/syllabus-api/dev
-# endpoint: http://localhost:4466/
 endpoint: ${env:PRISMA_ENDPOINT}
+
+datamodel: datamodel.prisma
 
 hooks:
   post-deploy:
-    - prisma generate
     - npx nexus-prisma-generate --output ./.yoga/nexus-prisma
 
 generate:
@@ -14,4 +13,4 @@ generate:
     output: ../.yoga/prisma-client/
 
 seed:
-  run: yarn ts-node prisma/seed.ts
+  run: npx ts-node ./prisma/seed.ts

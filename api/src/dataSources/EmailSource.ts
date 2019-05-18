@@ -1,8 +1,8 @@
 import { EmailSendError } from '../utils/errors';
 import { Context } from './Context';
 const mailjet = require('node-mailjet').connect(
-  process.env.MJ_APIKEY_PUBLIC,
-  process.env.MJ_APIKEY_PRIVATE,
+  process.env.MJ_APIKEY_PUBLIC as string,
+  process.env.MJ_APIKEY_PRIVATE as string,
 );
 
 export class EmailSource {

@@ -236,6 +236,7 @@ input ProductWhereInput {
 
 type Query {
   currentUser: User!
+  helloWorld(name: String!): String!
 }
 
 type Role {

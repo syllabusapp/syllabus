@@ -1,5 +1,5 @@
 // @TODO create test
-import {captureException} from '@sentry/browser';
+import {captureException, withScope} from '@sentry/browser';
 import React, {useContext} from 'react';
 import {Trans} from 'react-i18next';
 import {useTriggerAccountConfirmationEmailMutation} from '../generated/graphql';
@@ -25,12 +25,18 @@ export const ConfirmAccountAlert: React.SFC = () => {
       } else {
         // @TODO alert user of error
         // notify('notification.error', '', 'danger');
-        captureException(result);
+        withScope(scope => {
+          user && scope.setUser(user);
+          captureException(result);
+        });
       }
     } catch (error) {
       // @TODO alert user of error
       // notify('notification.error', '', 'danger');
-      captureException(error);
+      withScope(scope => {
+        user && scope.setUser(user);
+        captureException(error);
+      });
     }
   };
   return (

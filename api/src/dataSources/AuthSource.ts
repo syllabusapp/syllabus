@@ -1,6 +1,6 @@
 import { compare } from 'bcrypt';
 import { v4 as uuid } from 'uuid';
-import * as Yup from 'yup';
+import { string } from 'yup';
 import { NexusGenRootTypes } from '../../.yoga/nexus';
 import {
   InvalidEmailConfirmTokenError,
@@ -34,6 +34,9 @@ export class AuthSource {
   // eslint-disable-next-line @typescript-eslint/no-parameter-properties
   public constructor(protected ctx: Context) {}
 
+  public helloWorld(name: string): string {
+    return `Hello ${name || 'World'}`;
+  }
   public async canPerformAdminAction(): Promise<boolean> {
     // @TODO update after roles is fixed
     // const user = await getUser(this.ctx);
@@ -234,7 +237,7 @@ export class AuthSource {
     email: string,
   ): Promise<NexusGenRootTypes['TriggerEmailPayload']> {
     if (
-      !Yup.string()
+      !string()
         .email()
         .isValid(email)
     ) {
@@ -273,7 +276,7 @@ export class AuthSource {
     email: string,
   ): Promise<NexusGenRootTypes['TriggerEmailPayload']> {
     if (
-      !Yup.string()
+      !string()
         .email()
         .isValid(email)
     ) {
