@@ -86,11 +86,11 @@
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/service-worker.js"
     },
+    { "src": "/graphql(.*)", "dest": "api/dist/src/index.js" },
     {
       "src": "/(.*)",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/index.html"
-    },
-    { "src": "/graphql(.*)", "dest": "api/dist/src/index.js" }
+    }
   ]
 }
