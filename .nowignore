@@ -1,5 +1,7 @@
 api/*
 !api/dist
+!api/.yoga
+!api/src
 
 app/node_modules
 app/build
