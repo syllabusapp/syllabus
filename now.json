@@ -26,69 +26,69 @@
     }
   ],
   "routes": [
+    { "src": "^/graphql(/?)$", "dest": "api/dist/src/index.js" },
     {
-      "src": "/static/(.*)",
+      "src": "^/static/(.*)$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/static/$1"
     },
     {
-      "src": "/icons/(.*)",
+      "src": "^/icons/(.*)$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/icons/$1"
     },
     {
-      "src": "/locales/(.*)",
+      "src": "^/locales/(.*)$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/locales/$1"
     },
     {
-      "src": "/asset-manifest.json",
+      "src": "^/asset-manifest.json$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/asset-manifest.json"
     },
     {
-      "src": "/browserconfig.xml",
+      "src": "^/browserconfig.xml$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/browserconfig.xml"
     },
     {
-      "src": "/favicon.ico",
+      "src": "^/favicon.ico$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/favicon.ico"
     },
     {
-      "src": "/logo.jpg",
+      "src": "^/logo.jpg$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/logo.jpg"
     },
     {
-      "src": "/manifest.json",
+      "src": "^/manifest.json$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/manifest.json"
     },
     {
-      "src": "/precache-manifest.(.*)",
+      "src": "^/precache-manifest.(.*)$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/precache-manifest.$1"
     },
     {
-      "src": "/robots.txt",
+      "src": "^/robots.txt$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/robots.txt"
     },
     {
-      "src": "/safari-pinned-tab.svg",
+      "src": "^/safari-pinned-tab.svg$",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "app/safari-pinned-tab.svg"
     },
     {
-      "src": "/service-worker.js",
+      "src": "^/service-worker.js$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/service-worker.js"
     },
-    { "src": "/graphql(.*)", "dest": "api/dist/src/index.js" },
     {
-      "src": "/(.*)",
+      "src": "^/(.*)$",
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "app/index.html"
     }
