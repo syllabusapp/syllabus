@@ -14,7 +14,7 @@
   "builds": [
     {
       "src": "api/dist/src/index.js",
-      "use": "@now/node-server",
+      "use": "@now/node",
       "config": {
         "maxLambdaSize": "12mb"
       }
@@ -22,7 +22,7 @@
     {
       "src": "app/package.json",
       "use": "@now/static-build",
-      "config": { "distDir": "app/build" }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [

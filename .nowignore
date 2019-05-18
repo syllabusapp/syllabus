@@ -4,3 +4,6 @@ api/*
 !api/dist/**
 !api/lib
 !api/lib/**
+
+app/node_modules
+app/build
