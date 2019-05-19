@@ -6,7 +6,6 @@ import {
   prismaObjectType,
   stringArg,
 } from 'yoga';
-import { getUserId } from '../utils/utils';
 
 export const UserUpdateInput = inputObjectType({
   name: 'UserUpdateInput',
@@ -73,14 +72,6 @@ export const UserQuery = prismaExtendType({
   definition(t) {
     // t.prismaFields(['user', 'users']);
     t.prismaFields([]);
-
-    t.field('currentUser', {
-      type: 'User',
-      resolve: (_parent, _args, ctx) => {
-        const userId = getUserId(ctx);
-        return ctx.prisma.user({ id: userId as string });
-      },
-    });
   },
 });
 

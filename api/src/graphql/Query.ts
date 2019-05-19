@@ -2,7 +2,6 @@ import { prismaObjectType, stringArg } from 'yoga';
 
 /*
   type Query {
-    currentUser: User
   }
 */
 export const Query = prismaObjectType({

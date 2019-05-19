@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var yoga_1 = require("yoga");
-var utils_1 = require("../utils/utils");
 exports.UserUpdateInput = yoga_1.inputObjectType({
     name: 'UserUpdateInput',
     definition: function (t) {
@@ -96,13 +95,6 @@ exports.UserQuery = yoga_1.prismaExtendType({
     definition: function (t) {
         // t.prismaFields(['user', 'users']);
         t.prismaFields([]);
-        t.field('currentUser', {
-            type: 'User',
-            resolve: function (_parent, _args, ctx) {
-                var userId = utils_1.getUserId(ctx);
-                return ctx.prisma.user({ id: userId });
-            },
-        });
     },
 });
 exports.UserMutation = yoga_1.prismaExtendType({

@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var yoga_1 = require("yoga");
 /*
   type Query {
-    currentUser: User
   }
 */
 exports.Query = yoga_1.prismaObjectType({

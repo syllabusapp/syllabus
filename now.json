@@ -5,7 +5,7 @@
   "alias": "syllabusapp",
   "env": {
     "PRISMA_SECRET": "testing123",
-    "PRISMA_ENDPOINT": "https://eu1.prisma.sh/flavian/webshop-server/staging",
+    "PRISMA_ENDPOINT": "https://us1.prisma.sh/syllabus/syllabus-api/dev",
     "APP_SECRET": "jwtsecret123",
     "MJ_APIKEY_PUBLIC": "",
     "MJ_APIKEY_PRIVATE": "",

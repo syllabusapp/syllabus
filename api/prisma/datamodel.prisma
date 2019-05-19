@@ -9,17 +9,17 @@ enum SettingTypeType {
   Number
 }
 
-type Organization {
+type Organization @db(name: "organization") {
   id: ID! @id
   name: String! @unique
   users: [User!]! @relation(name: "UsersByOrganization")
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "OrganizationCreatedBy")
   updatedBy: User @relation(name: "OrganizationUpdatedBy")
 }
 
-type Plan {
+type Plan @db(name: "plan") {
   id: ID! @id
   amount: Int
   # currency: PlanCurrencyType
@@ -27,33 +27,33 @@ type Plan {
   nickname: String!
   product: Product! @relation(name: "PlanProduct")
   # usageType: PlanUsageType
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "PlanCreatedBy")
   updatedBy: User @relation(name: "PlanUpdatedBy")
 }
 
-type Product {
+type Product @db(name: "product") {
   id: ID! @id
   stripeId: ID! @unique
   name: String!
   type: ProductTypeType!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "ProductCreatedBy")
   updatedBy: User @relation(name: "ProductUpdatedBy")
 }
 
-type Role {
+type Role @db(name: "role") {
   id: ID! @id
   name: String! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "RoleCreatedBy")
   updatedBy: User @relation(name: "RoleUpdatedBy")
 }
 
-type Setting {
+type Setting @db(name: "setting") {
   id: ID! @id
   isGDPR: Boolean
   key: String!
@@ -61,29 +61,29 @@ type Setting {
   lastUpdatedByUser: DateTime
   type: SettingTypeType!
   value: Boolean
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "SettingCreatedBy")
   updatedBy: User @relation(name: "SettingUpdatedBy")
 }
 
-type StripeSubscription {
+type StripeSubscription @db(name: "stripeSubscription") {
   id: ID! @id
   customer: User! @relation(name: "StripeSubscriptionByUser")
   plan: Plan! @relation(name: "StripeSubscriptionPlan")
   quantity: Int
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "StripeSubscriptionCreatedBy")
   updatedBy: User @relation(name: "StripeSubscriptionUpdatedBy")
 }
 
-type User {
+type User @db(name: "user") {
   id: ID! @id
   deletedAt: DateTime
   email: String! @unique
   emailConfirmToken: String
-  emailConfirmed: Boolean! @default(value: "true")
+  emailConfirmed: Boolean! @default(value: true)
   firstName: String!
   lastLogin: DateTime
   lastName: String!
@@ -93,9 +93,10 @@ type User {
   resetToken: String
   roles: [Role!]! @relation(name: "RolesByUser")
   settings: [Setting!]! @relation(name: "SettingsByUser")
-  subscription: StripeSubscription @relation(name: "StripeSubscriptionByUser")
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  subscription: StripeSubscription
+    @relation(name: "StripeSubscriptionByUser", link: TABLE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   createdBy: User @relation(name: "UserCreatedBy")
   updatedBy: User @relation(name: "UserUpdatedBy")
 }

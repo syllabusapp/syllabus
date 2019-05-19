@@ -2,11 +2,9 @@ datamodel: datamodel.prisma
 
 endpoint: ${env:PRISMA_ENDPOINT}
 
-datamodel: datamodel.prisma
-
 hooks:
   post-deploy:
-    - npx nexus-prisma-generate --output ./.yoga/nexus-prisma
+    - prisma generate
 
 generate:
   - generator: typescript-client
