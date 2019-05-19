@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "graphql": "^14.2.1",
     "@graphql-codegen/cli": "^1.0.6",
     "@graphql-codegen/fragment-matcher": "^1.0.6",
     "@graphql-codegen/introspection": "^1.0.6",
@@ -26,5 +25,8 @@
     "@graphql-codegen/typescript-graphql-files-modules": "^1.0.6",
     "@graphql-codegen/typescript-react-apollo": "^1.0.6",
     "graphql-tag": "^2.10.1"
+  },
+  "resolutions": {
+    "graphql": "^14.2.1"
   }
 }
